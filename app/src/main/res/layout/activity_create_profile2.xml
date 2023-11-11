@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".activities.CreateProfile2">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back2"
+        android:layout_margin="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/userLogo"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Name"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/colorLayerDark"
+        app:layout_constraintTop_toBottomOf="@id/userLogo"
+        app:layout_constraintStart_toStartOf="@id/backButton"
+        android:textStyle="bold"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutFirstName"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
+        android:textColorHint="@color/primary_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:boxStrokeColor="@color/primary_dark"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/primary_dark"
+            android:gravity="top"
+            android:inputType="textPersonName" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutLastName"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:hint="Last Name"
+        android:textColorHint="@color/primary_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:boxStrokeColor="@color/primary_dark"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFirstName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastNameEditText"
+            android:textColor="@color/primary_text"
+            android:imeOptions="actionNext"
+            android:textColorHint="@color/primary_dark"
+            android:gravity="top"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/dobText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Of Birth"
+        android:textSize="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/colorLayerDark"
+        app:layout_constraintTop_toBottomOf="@id/layoutLastName"
+        app:layout_constraintStart_toStartOf="@id/backButton"
+        android:textStyle="bold"/>
+
+
+    <LinearLayout
+        android:id="@+id/dateLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dobText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDate"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:hint="dd"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            app:counterMaxLength="2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            app:boxBackgroundMode="outline">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/date"
+                android:imeOptions="actionNext"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:maxLength="2"
+                android:inputType="number"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutMonth"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:hint="mm"
+            app:counterMaxLength="2"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            app:boxBackgroundMode="outline">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/month"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:maxLength="2"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutYear"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:hint="yyyy"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            app:boxBackgroundMode="outline">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/year"
+                android:maxLength="4"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameSignIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateLayout"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continueButton"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:layout_gravity="center"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13sdp"
+            android:background="@drawable/background_chat_input"
+            app:backgroundTint="@android:color/holo_blue_bright"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/_8sdp"/>
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

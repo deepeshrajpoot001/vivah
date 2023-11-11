@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/chipIconTint"
+    android:padding="@dimen/_11sdp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add Member"
+    android:textColor="@color/white"
+    android:textStyle="bold"
+    android:textSize="@dimen/_25ssp"    />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutMemberName"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:hint="Member Name"
+        android:textColorHint="@color/primary_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:boxStrokeColor="@color/primary_dark"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@+id/titleText">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/memberNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/primary_dark"
+        android:gravity="top"
+        android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutMemberRelation"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:hint="Relation"
+        android:textColorHint="@color/primary_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:boxStrokeColor="@color/primary_dark"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@+id/titleText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/memberRelationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/primary_dark"
+            android:gravity="top"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/listOfFamilyRelation"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/primary_text"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutMemberOccupation"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:hint="Occupation"
+        android:textColorHint="@color/primary_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeWidth="@dimen/_1sdp"
+        app:boxStrokeColor="@color/primary_dark"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@+id/titleText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/memberOccupationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/primary_dark"
+            android:gravity="top"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/AddButtonInDialogue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_gravity="right"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/_13sdp"
+        android:background="@drawable/background_chat_input"
+        app:backgroundTint="#FFFFFF"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/_8sdp"/>
+
+</LinearLayout>

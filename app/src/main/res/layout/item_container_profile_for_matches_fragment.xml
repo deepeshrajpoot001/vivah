@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_8sdp"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/cardViewOFMatchFrag"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_8sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_5sdp">
+        
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H, 2:3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:riv_corner_radius="@dimen/_8sdp"
+            android:src="@drawable/image_for_matching_fragment"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@drawable/profile_layer"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H, 2:3"
+            app:layout_constraintBottom_toBottomOf="@id/profileImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:riv_corner_radius="@dimen/_8sdp"/>
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Deepesh Rajpoot"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout1"
+            app:drawableLeftCompat="@drawable/ic_round_verified_user_24"
+            app:drawableTint="@color/green"
+             />
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/languageAndCaste"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/ageAndYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13ssp"
+            android:text="@string/dob_height" />
+
+        <TextView
+            android:id="@+id/profession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13ssp"
+            app:drawableLeftCompat="@drawable/ic_round_work_24"
+            app:drawableTint="@color/white"
+            android:text="Software Developer" />
+
+        </LinearLayout>
+
+
+
+
+
+        <TextView
+            android:id="@+id/languageAndCaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/placeOfBirth"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:text="Hindi,Rajpoot"/>
+
+
+        <TextView
+            android:id="@+id/placeOfBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/profileImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:drawableLeftCompat="@drawable/ic_round_place_24"
+            app:drawableTint="@color/white"
+            android:text="Jhansi, UttarPradesh"/>
+
+
+
+        <TextView
+            android:id="@+id/aboutTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/profileImage"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="About Me"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/aboutText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/aboutTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Hello, here is quick introduction about myself.
+            I completed Btech, I respect others and live life with positive and progressive outlook "
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_12ssp"/>
+
+
+
+        <FrameLayout
+            android:id="@+id/frameSignIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:animateLayoutChanges="true">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/connectNowButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_round_check_24"
+                android:text="Connect Now"
+                android:textColor="#000000"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold"
+                app:backgroundTint="#59FF00" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+
+</androidx.cardview.widget.CardView>

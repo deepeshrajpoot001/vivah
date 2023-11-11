@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.AddImageActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_gravity="end">
+
+        <TextView
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Next"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            app:cardCornerRadius="@dimen/_100sdp"
+            android:elevation="@dimen/_20sdp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+           android:src="@drawable/add_user"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"/>
+
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_profile"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    />
+            </FrameLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add Your Photos to complete your Profile"
+        android:textColor="@color/chipStrokeColor"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:background="@color/divider"/>
+
+
+    <TextView
+        android:id="@+id/moreImageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add more image for better matches"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/_16sdp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/moreImageRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideInset"
+        android:background="@color/white"
+        android:scrollbars="vertical"
+        android:layout_margin="@dimen/_5sdp" />
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:animateLayoutChanges="true">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addMoreImages"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:text="Add Images"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_add"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/_13sdp"
+        app:backgroundTint="@android:color/holo_blue_bright"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/_8sdp"/>
+
+        <ProgressBar
+            android:id="@+id/addImageProgressBar"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="uploading...\n depend upon size of Image"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_13ssp"
+        android:textAlignment="center"
+        android:visibility="gone"
+        />
+
+
+</LinearLayout>
+
+
+</ScrollView>

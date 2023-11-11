@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".activities.CreateProfile4">
+
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back2"
+        android:layout_margin="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/liveWithFamilyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are ou Live With Your Family?"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text"
+        app:layout_constraintStart_toEndOf="@id/backButton"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/liveWithFamilySelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/backButton"
+        app:layout_constraintTop_toBottomOf="@id/liveWithFamilyTitle"
+        app:singleLine="false"
+        app:checkedChip="@+id/yes"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="true"
+            android:text="YES"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/primary_text"
+            app:chipBackgroundColor="@color/chipBackgroundColor"
+            app:chipIcon="@drawable/ic_circle"
+            app:chipIconTint="@color/chipIconTint"
+            app:chipStrokeColor="@color/chipStrokeColor"
+            app:chipStrokeWidth="1dp" />
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:checked="true"
+            android:text="NO"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/primary_text"
+            app:chipBackgroundColor="@color/chipBackgroundColor"
+            app:chipIcon="@drawable/ic_circle"
+            app:chipIconTint="@color/chipIconTint"
+            app:chipStrokeColor="@color/chipStrokeColor"
+            app:chipStrokeWidth="1dp" />
+
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/liveWithFamilySelection"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/whereFamilyLiveLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            android:hint="Where your family live">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/whereFamilyLive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/divider"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/maritalStatusLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Marital Status"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:id="@+id/maritalStatus"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dietLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            android:hint="Diet"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/diet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/heightLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            android:hint="Height"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/weightLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            android:hint="Weight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/motherTongueLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColorHint="@color/primary_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="@dimen/_1sdp"
+            app:boxStrokeColor="@color/primary_dark"
+            android:hint="Mother Tongue"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:id="@+id/motherTongue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/primary_dark"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/frameSignIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continueButton"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:layout_gravity="center"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_13sdp"
+            android:background="@drawable/background_chat_input"
+            app:backgroundTint="@android:color/holo_blue_bright"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/_8sdp"/>
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
