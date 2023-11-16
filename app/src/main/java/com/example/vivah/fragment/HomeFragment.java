@@ -358,14 +358,14 @@ public class HomeFragment extends Fragment {
                             }
 
 
-                            boolean Flag = false;
+                            boolean tempFlag = false;
                             for (int i = 0; i < connected.size(); i++) {
                                 if (connected.get(i).equals(queryDocumentSnapshot.getId())) {
-                                    Flag = true;
+                                    tempFlag = true;
                                     break;
                                 }
                             }
-                            if (Flag) {
+                            if (tempFlag) {
                                 continue;
                             }
 
