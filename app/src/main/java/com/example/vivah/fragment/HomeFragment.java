@@ -438,6 +438,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+
     private void showErrorMessage(){
         binding.textErrorMessage.setText(String.format("%s","No user available"));
         binding.textErrorMessage.setVisibility(View.VISIBLE);
