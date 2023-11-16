@@ -237,15 +237,18 @@ public class HomeFragment extends Fragment {
 
                         List<Integer> ageTo = new ArrayList<>();
                         int index = ageFrom.indexOf(Integer.parseInt(filterAgeFrom));
-                        ageTo = ageFrom.subList(index + 1, 19);
+                        ageTo = ageFrom.subList(index + 1, 20);
                         ArrayAdapter<Integer> adapterAgeTo = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageTo);
                         adapterAgeTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         dBinding.ageTo.setAdapter(adapterAgeTo);
+
+                        dBinding.ageTo.setSelection(ageTo.size()-1);
 
                         dBinding.ageTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 filterAgeTo = parent.getItemAtPosition(position).toString();
+
                             }
 
                             @Override
@@ -333,6 +336,7 @@ public class HomeFragment extends Fragment {
         }
 
 
+
         binding.refreshLayoutHome.setRefreshing(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USER)
@@ -349,7 +353,6 @@ public class HomeFragment extends Fragment {
                         profileHomeFrags.clear();
                         showErrorMessage();
                         profileHomeFragAdapter.notifyDataSetChanged();
-
 
 
                         for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
@@ -389,6 +392,8 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
                             if (flag) {
                                 if (!filterState.equals("All")) {
                                     if (!filterState.equals(dataState)) {
@@ -414,6 +419,9 @@ public class HomeFragment extends Fragment {
                                         continue;
                                     }
                                 }
+
+
+
                                 int minAge = Integer.parseInt(filterAgeFrom), maxAge = Integer.parseInt(filterAgeTo), dateAge;
 
                                 if ((dataAge <= minAge || dataAge >= maxAge)) {
