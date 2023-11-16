@@ -8,11 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,16 +31,13 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
-import org.checkerframework.checker.units.qual.A;
 
-import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+
 
 
 public class HomeFragment extends Fragment {
@@ -54,10 +49,9 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private PreferenceManager preferenceManager;
-    private FirebaseStorage firebaseStorage;
     private List<ProfileHomeFrag> profileHomeFrags;
     private profileHomeFragAdapter profileHomeFragAdapter;
-    private int i, size;
+
     private ArrayList<String> connected;
 
     String searchText = null;
@@ -69,9 +63,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         preferenceManager = new PreferenceManager(container.getContext());
-        firebaseStorage = FirebaseStorage.getInstance();
         profileHomeFrags = new ArrayList<>();
-        i = 0;
+
         connected = new ArrayList<>();
         showErrorMessage();
 
@@ -100,14 +93,11 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        binding.refreshLayoutHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (searchText == null) {
-                    getUser("deepesh", false);
-                } else {
-                    getUser(searchText, true);
-                }
+        binding.refreshLayoutHome.setOnRefreshListener(() -> {
+            if (searchText == null) {
+                getUser("deepesh", false);
+            } else {
+                getUser(searchText, true);
             }
         });
         getUser("deepesh", false);
@@ -141,114 +131,78 @@ public class HomeFragment extends Fragment {
         });
 
 
-        binding.filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(getContext());
-                DialogeLayoutFilterBinding dBinding = DialogeLayoutFilterBinding.inflate(getLayoutInflater());
-                dialog.setContentView(dBinding.getRoot());
-                String[] state = getResources().getStringArray(R.array.array_indian_states);
-                String[] motherTongue = getResources().getStringArray(R.array.languages);
+        binding.filter.setOnClickListener(v -> {
+            Dialog dialog = new Dialog(requireContext());
+            DialogeLayoutFilterBinding dBinding = DialogeLayoutFilterBinding.inflate(getLayoutInflater());
+            dialog.setContentView(dBinding.getRoot());
+            String[] state = getResources().getStringArray(R.array.array_indian_states);
+            String[] motherTongue = getResources().getStringArray(R.array.languages);
 
-                ArrayList<String> tempState = new ArrayList<>(Arrays.asList(state));
-                tempState.add(0, "All");
+            ArrayList<String> tempState = new ArrayList<>(Arrays.asList(state));
+            tempState.add(0, "All");
 
-                ArrayList<String> tempMotherTongue = new ArrayList<>(Arrays.asList(motherTongue));
-                tempMotherTongue.add(0, "All");
+            ArrayList<String> tempMotherTongue = new ArrayList<>(Arrays.asList(motherTongue));
+            tempMotherTongue.add(0, "All");
 
-                Integer[] age = {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39};
-                ArrayList<Integer> ageFrom = new ArrayList<>(Arrays.asList(age));
+            Integer[] age = {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39};
+            ArrayList<Integer> ageFrom = new ArrayList<>(Arrays.asList(age));
 
-                ArrayList<String> tempIncome = new ArrayList<>(Arrays.asList(Constants.yearlyIncome));
-                tempIncome.add(0,"All");
+            ArrayList<String> tempIncome = new ArrayList<>(Arrays.asList(Constants.yearlyIncome));
+            tempIncome.add(0,"All");
 
 
-                List<Integer> ageTo = new ArrayList<>();
-                ageTo = ageFrom.subList(2, 19);
-                ArrayAdapter<Integer> adapterAgeTo = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageTo);
-                adapterAgeTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                dBinding.ageTo.setAdapter(adapterAgeTo);
-                dBinding.ageTo.setSelection(5);
+            List<Integer> ageTo;
+            ageTo = ageFrom.subList(2, 19);
+            ArrayAdapter<Integer> adapterAgeTo = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageTo);
+            adapterAgeTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dBinding.ageTo.setAdapter(adapterAgeTo);
+            dBinding.ageTo.setSelection(5);
 
 
-                ArrayAdapter<String> adapterState = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, tempState);
-                ArrayAdapter<String> adapterMotherTongue = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, tempMotherTongue);
-                ArrayAdapter<Integer> adapterAgeFrom = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageFrom);
-                ArrayAdapter<String> adapterIncomeYearly = new ArrayAdapter<>(requireActivity().getApplicationContext(),android.R.layout.simple_spinner_item,tempIncome);
+            ArrayAdapter<String> adapterState = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, tempState);
+            ArrayAdapter<String> adapterMotherTongue = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, tempMotherTongue);
+            ArrayAdapter<Integer> adapterAgeFrom = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageFrom);
+            ArrayAdapter<String> adapterIncomeYearly = new ArrayAdapter<>(requireActivity().getApplicationContext(),android.R.layout.simple_spinner_item,tempIncome);
 
 
-                adapterState.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapterMotherTongue.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapterAgeFrom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapterIncomeYearly.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterState.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterMotherTongue.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterAgeFrom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterIncomeYearly.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                dBinding.state.setAdapter(adapterState);
-                dBinding.motherTongue.setAdapter(adapterMotherTongue);
-                dBinding.ageFrom.setAdapter(adapterAgeFrom);
-                dBinding.income.setAdapter(adapterIncomeYearly);
+            dBinding.state.setAdapter(adapterState);
+            dBinding.motherTongue.setAdapter(adapterMotherTongue);
+            dBinding.ageFrom.setAdapter(adapterAgeFrom);
+            dBinding.income.setAdapter(adapterIncomeYearly);
 
 
-                dBinding.state.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        filterState = parent.getItemAtPosition(position).toString();
+            dBinding.state.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    filterState = parent.getItemAtPosition(position).toString();
 
-                        if (filterState.equals("All")) {
-                            dBinding.district.setVisibility(View.GONE);
-                            dBinding.districtText.setVisibility(View.GONE);
-                            filterDistrict = "Select Your District";
-                            filterState = "All";
-                        } else {
-                            Toast.makeText(getContext(), filterState, Toast.LENGTH_SHORT).show();
-                            String[] district = getResources().getStringArray(findResourcesOfState(filterState));
-                            ArrayAdapter<String> adapterDistrict = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, district);
-                            adapterDistrict.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            dBinding.district.setAdapter(adapterDistrict);
-                            dBinding.district.setVisibility(View.VISIBLE);
-                            dBinding.districtText.setVisibility(View.VISIBLE);
+                    if (filterState.equals("All")) {
+                        dBinding.district.setVisibility(View.GONE);
+                        dBinding.districtText.setVisibility(View.GONE);
+                        filterDistrict = "Select Your District";
+                        filterState = "All";
+                    } else {
+                        Toast.makeText(getContext(), filterState, Toast.LENGTH_SHORT).show();
+                        String[] district = getResources().getStringArray(findResourcesOfState(filterState));
+                        ArrayAdapter<String> adapterDistrict = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, district);
+                        adapterDistrict.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        dBinding.district.setAdapter(adapterDistrict);
+                        dBinding.district.setVisibility(View.VISIBLE);
+                        dBinding.districtText.setVisibility(View.VISIBLE);
 
-                            dBinding.district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                @Override
-                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    if (parent.getItemAtPosition(position).toString().equals("Select Your District")) {
-                                        filterDistrict = "Select Your District";
-                                    } else {
-                                        filterDistrict = parent.getItemAtPosition(position).toString();
-                                    }
-                                }
-
-                                @Override
-                                public void onNothingSelected(AdapterView<?> parent) {
-
-                                }
-                            });
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
-
-                dBinding.ageFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        filterAgeFrom = parent.getItemAtPosition(position).toString();
-
-                        List<Integer> ageTo = new ArrayList<>();
-                        int index = ageFrom.indexOf(Integer.parseInt(filterAgeFrom));
-                        ageTo = ageFrom.subList(index + 1, 20);
-                        ArrayAdapter<Integer> adapterAgeTo = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageTo);
-                        adapterAgeTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        dBinding.ageTo.setAdapter(adapterAgeTo);
-
-                        dBinding.ageTo.setSelection(ageTo.size()-1);
-
-                        dBinding.ageTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        dBinding.district.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                filterAgeTo = parent.getItemAtPosition(position).toString();
-
+                                if (parent.getItemAtPosition(position).toString().equals("Select Your District")) {
+                                    filterDistrict = "Select Your District";
+                                } else {
+                                    filterDistrict = parent.getItemAtPosition(position).toString();
+                                }
                             }
 
                             @Override
@@ -257,63 +211,88 @@ public class HomeFragment extends Fragment {
                             }
                         });
                     }
+                }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
 
-                    }
-                });
+            dBinding.ageFrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    filterAgeFrom = parent.getItemAtPosition(position).toString();
 
+                    List<Integer> ageTo;
+                    int index = ageFrom.indexOf(Integer.parseInt(filterAgeFrom));
+                    ageTo = ageFrom.subList(index + 1, 20);
+                    ArrayAdapter<Integer> adapterAgeTo = new ArrayAdapter<>(requireActivity().getApplicationContext(), android.R.layout.simple_spinner_item, ageTo);
+                    adapterAgeTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    dBinding.ageTo.setAdapter(adapterAgeTo);
 
-                dBinding.motherTongue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        filterMotherTongue = parent.getItemAtPosition(position).toString();
-                    }
+                    dBinding.ageTo.setSelection(ageTo.size()-1);
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                    dBinding.ageTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            filterAgeTo = parent.getItemAtPosition(position).toString();
 
-                    }
-                });
-
-                dBinding.income.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        filterIncome = parent.getItemAtPosition(position).toString();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-                dBinding.cancelButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dBinding.applyButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (searchText == null) {
-                            getUser("", true);
-                        } else {
-                            getUser(searchText, true);
                         }
 
-                        dialog.dismiss();
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
 
-                dialog.show();
+            dBinding.motherTongue.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    filterMotherTongue = parent.getItemAtPosition(position).toString();
+                }
 
-            }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            dBinding.income.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    filterIncome = parent.getItemAtPosition(position).toString();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            dBinding.cancelButton.setOnClickListener(v1 -> dialog.dismiss());
+            dBinding.applyButton.setOnClickListener(v12 -> {
+
+                if (searchText == null) {
+                    getUser("", true);
+                } else {
+                    getUser(searchText, true);
+                }
+
+                dialog.dismiss();
+
+            });
+
+
+            dialog.show();
+
         });
 
 
@@ -349,7 +328,7 @@ public class HomeFragment extends Fragment {
                     String currentUserId = preferenceManager.getString(Constants.KEY_USER_ID);
                     if (task.isSuccessful() && task.getResult() != null) {
 
-                        size = task.getResult().size();
+
                         profileHomeFrags.clear();
                         showErrorMessage();
                         profileHomeFragAdapter.notifyDataSetChanged();
@@ -422,7 +401,7 @@ public class HomeFragment extends Fragment {
 
 
 
-                                int minAge = Integer.parseInt(filterAgeFrom), maxAge = Integer.parseInt(filterAgeTo), dateAge;
+                                int minAge = Integer.parseInt(filterAgeFrom), maxAge = Integer.parseInt(filterAgeTo);
 
                                 if ((dataAge <= minAge || dataAge >= maxAge)) {
                                     continue;

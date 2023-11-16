@@ -23,7 +23,7 @@
     <color name="bottom_bar_icon_tint">#CFD0E2</color>
     <color name="bottom_bar_icon_tint_active">#35B7CF</color>
     <color name="bottom_bar_text_color">#35B7CF</color>
-    <color name="background">#F8FCFD</color>
+    <color name="background">#FFFFFF</color>
     <color name="search_background">#F3F6F8</color>
     <color name="favorite_background">#FF7173</color>
     <color name="viewProfileIcon">#00FF41</color>
