@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -19,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.checkerframework.checker.units.qual.C;
 
 import java.time.Year;
 import java.util.Objects;
@@ -69,6 +72,7 @@ public class SetPassword extends AppCompatActivity {
 
                 }else if(Objects.equals(activityWork, "forgetPassword")){
 
+
                    mobileNo = getIntent().getStringExtra("mobileNo");
 
                     FirebaseFirestore database2 = FirebaseFirestore.getInstance();
@@ -79,11 +83,12 @@ public class SetPassword extends AppCompatActivity {
                                 if(task.isSuccessful() && task.getResult() != null
                                         && task.getResult().getDocumentChanges().size()>0){
 
+
                                     DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
                                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
                                     preferenceManager.putString(Constants.KEY_USER_ID,documentSnapshot.getId());
                                     preferenceManager.putString(Constants.KEY_FIRST_NAME,documentSnapshot.getString(Constants.KEY_FIRST_NAME) );
-                                    preferenceManager.putString(Constants.KEY_NAME,profile.firstName+" "+Constants.KEY_LAST_NAME);
+                                    preferenceManager.putString(Constants.KEY_NAME,documentSnapshot.getString(Constants.KEY_NAME));
                                     preferenceManager.putString(Constants.KEY_LAST_NAME, documentSnapshot.getString(Constants.KEY_LAST_NAME));
                                     preferenceManager.putString(Constants.KEY_MOBILE_NO,documentSnapshot.getString(Constants.KEY_MOBILE_NO));
                                     preferenceManager.putString(Constants.KEY_GENDER,documentSnapshot.getString(Constants.KEY_GENDER));
@@ -96,9 +101,11 @@ public class SetPassword extends AppCompatActivity {
 
 
 
+
+
                                     FirebaseFirestore database = FirebaseFirestore.getInstance();
                                     DocumentReference documentReference =
-                                            database.collection(Constants.KEY_COLLECTION_USER).document(preferenceManager.getString(Constants.KEY_USER_ID));
+                                            database.collection(Constants.KEY_COLLECTION_USER).document(documentSnapshot.getId());
                                     documentReference.update(
                                             Constants.KEY_PASSWORD, binding.setPasswordText.getText().toString()
 
@@ -109,12 +116,16 @@ public class SetPassword extends AppCompatActivity {
                                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                      startActivity(intent);
 
+
+
                                     }
                                  else {
                                      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                      preferenceManager.putString(Constants.KEY_PROFILE_IMAGE, documentSnapshot.getString(Constants.KEY_PROFILE_IMAGE));
                                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                      startActivity(intent);
+
+
                                  }
                                 }else{
 

@@ -47,7 +47,7 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
         });
         binding.ForgetPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),VerificationActivity2.class);
+            Intent intent = new Intent(getApplicationContext(),VerificationActivity.class);
             intent.putExtra("type","forgetPassword");
             startActivity(intent);
 

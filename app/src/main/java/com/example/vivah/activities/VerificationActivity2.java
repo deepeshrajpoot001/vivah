@@ -74,6 +74,10 @@ public class VerificationActivity2 extends AppCompatActivity {
         binding.buttonVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
                 if(binding.inputCode1.getText().toString().trim().isEmpty()
                         ||binding.inputCode2.getText().toString().trim().isEmpty()
                         ||binding.inputCode3.getText().toString().trim().isEmpty()
@@ -195,6 +199,7 @@ public class VerificationActivity2 extends AppCompatActivity {
                             });
 
                 }
+
             }
         });
 

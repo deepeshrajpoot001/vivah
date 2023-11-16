@@ -65,10 +65,7 @@ public class CreateProfile5 extends AppCompatActivity {
 
 
 
-        binding.caste.setText("OBC");
-        binding.caste.setKeyListener(null);
-        binding.subCaste.setText("Lodhi-Rajpoot");
-        binding.subCaste.setKeyListener(null);
+
 
         binding.finishButton.setOnClickListener(v -> {
             if(isValidDetail()){

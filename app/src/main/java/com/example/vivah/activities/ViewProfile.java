@@ -1,12 +1,11 @@
 package com.example.vivah.activities;
 
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,9 +29,7 @@ import com.example.vivah.models.Profile;
 import com.example.vivah.models.ProfileMatchesFrag;
 import com.example.vivah.utilities.Constants;
 import com.example.vivah.utilities.PreferenceManager;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -41,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+
 
 public class ViewProfile extends AppCompatActivity {
 

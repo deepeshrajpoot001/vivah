@@ -130,14 +130,18 @@ public class CreateProfile3 extends AppCompatActivity {
 
     public boolean isValidDetail(){
         if(binding.state.getText().toString().trim().isEmpty()){
+
             showMessage("enter state",binding.state.getId(),binding.stateLayout.getId());
             return false;
         }else if(binding.district.getText().toString().trim().isEmpty()){
+
             showMessage("enter district",binding.district.getId(),binding.districtLayout.getId());
             return  false;
         }else if(binding.district.getText().toString().equals("Select Your District")){
+
             return false;
         }
+
 
         profile.state = binding.state.getText().toString();
         profile.district = binding.district.getText().toString();
@@ -149,6 +153,7 @@ public class CreateProfile3 extends AppCompatActivity {
                     }
                 }
         }
+
         return false;
 
     }
@@ -173,10 +178,13 @@ public class CreateProfile3 extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             profile.state = documentSnapshot.getString(Constants.KEY_STATE);
-                            updateDistrict(state);
+                            updateDistrict(getResources().getStringArray(findResourcesOfState(profile.state)));
+
                             profile.district = documentSnapshot.getString(Constants.KEY_DISTRICT);
                             binding.state.setText(profile.state);
                             binding.district.setText(profile.district);
+
+
 
 
                             binding.district.setVisibility(View.VISIBLE);
