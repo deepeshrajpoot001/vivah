@@ -17,6 +17,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 
@@ -40,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewProfile extends AppCompatActivity {
 
@@ -58,6 +60,8 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         profileMatchesFrag= new ProfileMatchesFrag();
+
+
 
 
         if(getIntent().getStringExtra("type").equals("requestSent")){
@@ -111,6 +115,18 @@ public class ViewProfile extends AppCompatActivity {
         });
 
 
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private  void setUserData(){

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:background="#8EA4C1"
+
+    android:background="@color/backgroundGreen"
     tools:context=".activities.ChatActivity">
 
     <View
@@ -14,7 +14,6 @@
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/background_content_top"
-        android:backgroundTint="#E4E8ED"
         app:layout_constraintBottom_toTopOf="@id/layoutSend"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -22,7 +21,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#3F5A81"
+        android:background="@color/backgroundGreen"
         app:layout_constraintBottom_toTopOf="@id/viewSupporter"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -70,7 +69,7 @@
         android:gravity="center"
         android:maxLength="15"
         android:maxLines="1"
-        android:textColor="@color/white"
+        android:textColor="#000000"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/imageBack"

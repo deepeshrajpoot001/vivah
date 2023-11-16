@@ -6,4 +6,10 @@
         android:bottomLeftRadius="@dimen/_32sdp"
         android:bottomRightRadius="@dimen/_32sdp"/>
 
+    <gradient
+        android:startColor="@color/backgroundGreen"
+        android:endColor="@color/backgroundGreen"
+        android:centerColor="@color/white"/>
+
+    
 </shape>
