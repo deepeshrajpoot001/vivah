@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -138,8 +139,18 @@ public class ViewProfile extends AppCompatActivity {
 
                         Profile pr = documentSnapshot.toObject(Profile.class);
 
+
                         Glide.with(binding.circleImageView).load(Uri.parse(documentSnapshot.getString(Constants.KEY_PROFILE_IMAGE))).into(binding.circleImageView);
 
+                        binding.circleImageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(ViewProfile.this, ViewImage.class);
+                                intent.putExtra("image",pr.profile_image);
+                                startActivity(intent);
+
+                            }
+                        });
                         str = "Created By: "+documentSnapshot.getString(Constants.KEY_CREATED_BY);
                         binding.createdByText.setText(str);
 
