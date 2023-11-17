@@ -134,7 +134,7 @@ public class AddImageActivity extends AppCompatActivity {
                 iGallery.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 iGallery.setAction(Intent.ACTION_GET_CONTENT);
                 pickMoreImage.launch(Intent.createChooser(iGallery,"Select Picture"));
-               // startActivityForResult(Intent.createChooser(iGallery,"Select Picture"),1);
+             //  startActivityForResult(Intent.createChooser(iGallery,"Select Picture"),1);
             }
         });
 
@@ -155,7 +155,6 @@ public class AddImageActivity extends AppCompatActivity {
               Intent intent = new Intent(AddImageActivity.this, CropperActivity.class);
               intent.putExtra("DATA", result.toString());
               pickProfileImage.launch(intent);
-              //startActivityForResult(intent, 101);
           }
       }
   });

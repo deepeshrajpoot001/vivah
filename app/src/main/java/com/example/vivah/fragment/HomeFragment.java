@@ -366,6 +366,7 @@ public class HomeFragment extends Fragment {
                             String motherTongueData = queryDocumentSnapshot.getString(Constants.KEY_MOTHER_TONGUE);
                             profileHomeFrag.birthOfPlace = dataDistrict + "," + dataState;
                             profileHomeFrag.id = queryDocumentSnapshot.getId();
+                            profileHomeFrag.height = queryDocumentSnapshot.getString(Constants.KEY_HEIGHT);
                             String profileImageUri = queryDocumentSnapshot.getString(Constants.KEY_PROFILE_IMAGE);
                             profileHomeFrag.profileImage = Uri.parse(profileImageUri);
 
