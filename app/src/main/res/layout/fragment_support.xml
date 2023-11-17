@@ -26,10 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Log Out"
+        android:text="LogOut"
+        android:drawableRight="@drawable/round_logout_24"
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="@dimen/_13sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profileLayout"
@@ -77,14 +78,16 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_16ssp"/>
+                android:textSize="@dimen/_12ssp"/>
 
             <TextView
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/ubuntu_bold"
+
                 android:gravity="center"
+                android:textStyle="bold"
                 android:includeFontPadding="false"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textAllCaps="true"
@@ -97,11 +100,10 @@
                 android:id="@+id/textEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:textStyle = "bold"
-
-                android:layout_marginStart="@dimen/_20sdp"
                 android:text="Edit Profile"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:includeFontPadding="false"
                 android:textAllCaps="true"
                 android:textColor="@color/viewProfileIcon"
@@ -128,6 +130,8 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <LinearLayout
         android:id="@+id/paymentLinearLayout"
@@ -196,6 +200,8 @@
         </FrameLayout>
 
     </LinearLayout>
+
+
 
 
 

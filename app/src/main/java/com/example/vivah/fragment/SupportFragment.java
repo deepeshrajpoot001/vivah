@@ -66,6 +66,7 @@ public class SupportFragment extends Fragment {
         binding.textId.setText("Id: "+preferenceManager.getString(Constants.KEY_USER_ID));
         Glide.with(binding.circleImageView).load(preferenceManager.getString(Constants.KEY_PROFILE_IMAGE)).into(binding.circleImageView);
 
+
 binding.circleImageView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
