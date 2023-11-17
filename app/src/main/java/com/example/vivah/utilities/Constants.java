@@ -96,7 +96,7 @@ public class Constants {
         if (remoteMsgHeaders == null) {
             remoteMsgHeaders = new HashMap<>();
             remoteMsgHeaders.put(REMOTE_MSG_AUTHORIZATION,
-                    "key=AAAAyvJWXcE:APA91bFWarVF2IfSFDg-nWpCgsCtwKSakKhanqEVi1wbXChVKZDCgUN-HDDoIjmWgzbg2x-PhBD_MHIpPPJ5EKWW-SrrTcatBwWXbcqMiW4Byn52uHBmrfUkZfWxtc18LHyIJ9Ngjkgd"
+                    "key=AAAAihRdfMQ:APA91bGcrvUplPDWPXT7draXjiCsNsrIpfXCHjnNvSO5gEmE11v3J4XhXUR8J7qzU2UWsvPuEvQVqam_4f1bOCI48QR0enWKUWdmAQ8niQi0-f88INQVhXg_-uFmgtpSfz9p5B_hNdJk"
             );
             remoteMsgHeaders.put(REMOTE_MSG_CONTENT_TYPE, "application/json");
         }
