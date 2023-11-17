@@ -118,6 +118,33 @@ public class CreateProfile4 extends AppCompatActivity {
         binding.weight.setAdapter(adapterWeight);
         binding.motherTongue.setAdapter(adapterMotherTongue);
 
+
+        binding.maritalStatus.setOnClickListener(view -> {
+            if(!binding.maritalStatus.getText().toString().isEmpty())
+            binding.maritalStatus.setText("");
+        });
+
+        binding.diet.setOnClickListener(view -> {
+            if(!binding.diet.getText().toString().isEmpty())
+                binding.diet.setText("");
+        });
+
+        binding.height.setOnClickListener(view -> {
+            if(!binding.height.getText().toString().isEmpty())
+                binding.height.setText("");
+        });
+
+        binding.weight.setOnClickListener(view -> {
+            if(!binding.weight.getText().toString().isEmpty())
+                binding.weight.setText("");
+        });
+
+        binding.motherTongue.setOnClickListener(view -> {
+            if(!binding.motherTongue.getText().toString().isEmpty())
+                binding.motherTongue.setText("");
+        });
+
+
         binding.maritalStatus.setKeyListener(null);
         binding.diet.setKeyListener(null);
         binding.height.setKeyListener(null);

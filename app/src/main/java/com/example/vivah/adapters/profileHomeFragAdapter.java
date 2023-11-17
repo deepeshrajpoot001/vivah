@@ -67,7 +67,7 @@ public class profileHomeFragAdapter extends RecyclerView.Adapter<profileHomeFrag
             if(indexOfn==-1){
                 height = str.substring(0,3);
             }else{
-                height = str.substring(0,indexOfn);
+                height = str.substring(0,indexOfn+1);
             }
             binding.height.setText(height);
             binding.profession.setText(profileHomeFragdata.profession);
