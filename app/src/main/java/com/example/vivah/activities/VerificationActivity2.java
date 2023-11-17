@@ -160,7 +160,7 @@ public class VerificationActivity2 extends AppCompatActivity {
                                                     preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
                                                     preferenceManager.putString(Constants.KEY_FIRST_NAME, profile.firstName);
                                                     preferenceManager.putString(Constants.KEY_LAST_NAME, profile.lastName);
-                                                    preferenceManager.putString(Constants.KEY_NAME,profile.firstName+" "+Constants.KEY_LAST_NAME);
+                                                    preferenceManager.putString(Constants.KEY_NAME,profile.firstName+" "+profile.lastName);
                                                     preferenceManager.putString(Constants.KEY_MOBILE_NO, profile.mobileNo);
                                                     preferenceManager.putString(Constants.KEY_CALL_WORD,profile.callWord);
                                                     preferenceManager.putString(Constants.KEY_GENDER, profile.gender);
