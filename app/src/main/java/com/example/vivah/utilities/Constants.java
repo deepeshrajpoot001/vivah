@@ -96,7 +96,7 @@ public class Constants {
         if (remoteMsgHeaders == null) {
             remoteMsgHeaders = new HashMap<>();
             remoteMsgHeaders.put(REMOTE_MSG_AUTHORIZATION,
-                    "key=AAAAihRdfMQ:APA91bGcrvUplPDWPXT7draXjiCsNsrIpfXCHjnNvSO5gEmE11v3J4XhXUR8J7qzU2UWsvPuEvQVqam_4f1bOCI48QR0enWKUWdmAQ8niQi0-f88INQVhXg_-uFmgtpSfz9p5B_hNdJk"
+                    "put your key"
             );
             remoteMsgHeaders.put(REMOTE_MSG_CONTENT_TYPE, "application/json");
         }
