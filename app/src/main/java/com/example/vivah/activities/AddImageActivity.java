@@ -43,6 +43,7 @@ import java.util.ArrayList;
 public class AddImageActivity extends AppCompatActivity {
     private ActivityAddImageBinding binding;
     private ActivityResultLauncher<String> mGetContent;
+
     private PreferenceManager preferenceManager;
    private Uri profileImage;
     private ArrayList<String> moreImageUrlArray;
@@ -110,6 +111,11 @@ public class AddImageActivity extends AppCompatActivity {
 
 
 
+        // one two four firvdsfdddd,,,kkkkkkkk
+        //dfsdfsd
+        //sdfsdfsdf
+        //sdfsdfsdsdfsdsdf
+        //sfdsfsdsfsdfsdfsdfsdfsdfsdfsdfsdf
       //  uri.add(Uri.parse("android.resource://com.example.vivah/drawable/ic_add"));
         imageAdapter = new ImageAdapter(moreImageUrlArray, AddImageActivity.this);
         binding.moreImageRecyclerView.setLayoutManager(new GridLayoutManager(AddImageActivity.this,4));
@@ -134,7 +140,7 @@ public class AddImageActivity extends AppCompatActivity {
                 iGallery.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 iGallery.setAction(Intent.ACTION_GET_CONTENT);
                 pickMoreImage.launch(Intent.createChooser(iGallery,"Select Picture"));
-             //  startActivityForResult(Intent.createChooser(iGallery,"Select Picture"),1);
+             //  startActivityForResult(Intent.createChooser(iGallery,"Select Picture"),1);fff
             }
         });
 

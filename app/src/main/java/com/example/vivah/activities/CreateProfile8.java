@@ -33,7 +33,7 @@ public class CreateProfile8 extends AppCompatActivity {
     private FirebaseFirestore database;
     private PreferenceManager preferenceManager;
     private ArrayList<String> hobbies;
-    private ArrayList<String> pHobbies;
+
     private   int progress = 5;
 
     @Override
