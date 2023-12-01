@@ -22,4 +22,3 @@ Throughout this journey, I've gained valuable insights into:
 👨‍💻 Reflecting on the journey:
 Building VIVAH has not only expanded my technical skills but also deepened my understanding of user-centric design and efficient data management. I'm grateful for the opportunities to learn and grow throughout this process.
 🙌 Thank you to everyone involved in this journey! Your support and encouragement have been invaluable.
-Feel free to check out VIVAH on https://lnkd.in/gDqKUJN4 and let me know your thoughts! 🌟
